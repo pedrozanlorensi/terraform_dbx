@@ -1,3 +1,5 @@
+# Variables required by this module
+
 variable "prefix" {
   type        = string
   description = "Prefix for the resources in this module"
@@ -39,6 +41,11 @@ variable "resource_group_name" {
 }
 
 variable "workspace_resource_id" {
+  description = "Resource ID of the Databricks workspace"
+  type        = string
+}
+
+variable "metastore_owner" {
   description = "Resource ID of the Databricks workspace"
   type        = string
 }

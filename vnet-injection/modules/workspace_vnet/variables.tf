@@ -1,4 +1,5 @@
-# Other Resources Variables
+# Variables required by this module
+
 variable "prefix" {
   description = "The Prefix used for all resources in this example"
   type        = string

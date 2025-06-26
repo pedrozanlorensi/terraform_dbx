@@ -1,3 +1,4 @@
+# Required by the module
 terraform {
   required_providers {
     azurerm = {

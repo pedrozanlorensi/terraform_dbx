@@ -1,3 +1,6 @@
+## This outputs are used by the other modules
+#  Do not delete them
+
 output "metastore_id" {
   value = databricks_metastore.databricks-metastore.id
 }

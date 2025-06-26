@@ -1,25 +1,28 @@
-
+# Create Azure Databricks Workspace
 resource "azurerm_databricks_workspace" "workspace" {
   name                        = "workspace-${var.prefix}"
-  resource_group_name         = azurerm_resource_group.rg.name
+  resource_group_name         = azurerm_resource_group.rg.name # (resource_group.tf)
   location                    = azurerm_resource_group.rg.location
   sku                         = "premium"
-  # managed_resource_group_name = "${var.prefix}-mrg"
-
   public_network_access_enabled = true
+
 
   custom_parameters {
     no_public_ip        = true
-    public_subnet_name  = azurerm_subnet.public.name
-    private_subnet_name = azurerm_subnet.private.name
-    virtual_network_id  = azurerm_virtual_network.vnet.id
+    
+    virtual_network_id  = azurerm_virtual_network.vnet.id # (network.tf)
+    public_subnet_name  = azurerm_subnet.public.name # (network.tf)
+    private_subnet_name = azurerm_subnet.private.name # (network.tf)
+    public_subnet_network_security_group_association_id  = azurerm_subnet_network_security_group_association.public.id # (network.tf)
+    private_subnet_network_security_group_association_id = azurerm_subnet_network_security_group_association.private.id # (network.tf)
 
-    public_subnet_network_security_group_association_id  = azurerm_subnet_network_security_group_association.public.id
-    private_subnet_network_security_group_association_id = azurerm_subnet_network_security_group_association.private.id
+    nat_gateway_name = azurerm_nat_gateway.nat_gw.name # (network.tf)
+    public_ip_name = azurerm_public_ip.nat_pub_ip.name # (network.tf)
   }
-#Optional
+
+#Optional 
   tags = {
-    owner = "Thais Henrique"
-    Project     = "Terraform Azure"
+    owner       = "Your_Name" # Example
+    Project     = "Terraform Azure" # Example
   }
 }
