@@ -17,3 +17,16 @@ resource "databricks_metastore_data_access" "access-connector-data-access" {
   is_default    = true
   force_destroy = true # keep this for the destroy command
 }
+
+# Create External Location for the Container
+resource "databricks_external_location" "external-location" {
+  #provider   = databricks.mws
+  depends_on = [databricks_metastore_data_access.access-connector-data-access]
+  
+  name            = "${var.metastore_storage_name}-external-location"
+  url             = format("abfss://%s@%s.dfs.core.windows.net/", 
+                           azurerm_storage_container.root_storage_container.name, 
+                           azurerm_storage_account.storage_accont.name)
+  credential_name = databricks_metastore_data_access.access-connector-data-access.name
+  comment         = "External location for Unity Catalog metastore container"
+}

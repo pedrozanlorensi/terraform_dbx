@@ -3,7 +3,8 @@
 *last update: 07/21/2025* <br>
 *reviewed by: Thais Henrique*
 
-## Prerequisite: 
+## Prerequisites
+
 You need to have the Azure CLI Installed:
 
 * [Install Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
@@ -14,15 +15,26 @@ You need to have the Azure CLI Installed:
 
 We are using Azure CLI for Authentication
 Run this on the Terminal where you are going to execute Terraform.
+
 ```
 az login
+```
+
+#### Multiple Tenants or multiple subscriptions
+```
+az login --tenant <tenant-id>
+```
+```
+az account set --subscription <subscription-id>
+```
+```
+az account show --output table
 ```
 
 Documentation:
 * [Install Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
 * [Sing in Options](https://learn.microsoft.com/en-us/cli/azure/authenticate-azure-cli?view=azure-cli-latest#sign-into-azure-with-azure-cli)
 * [Interactive Login (az login)](https://learn.microsoft.com/en-us/cli/azure/authenticate-azure-cli-interactively?view=azure-cli-latest)
-
 
 You can use other authentication methods, but be sure to configure the "provider.tf" file correctly.
 
@@ -42,7 +54,8 @@ Note:
 
 * Run `terraform init` to initialize terraform and download required providers.
 
-* Run `terraform plan` to see what resources will be deployed.
+* Run `terraform plan` to see what resources will be 
+deployed.
 
 * Run `terraform apply` to deploy resources to your Azure environment. Since we used `az login` method to authenticate to providers, you will be prompted to login to Azure via browser. Enter `yes` when prompted to deploy resources.
 
@@ -92,5 +105,5 @@ This module creates all the resource related to Azure Portal, including the Azur
 #### Unity Catalog
 
 - Create a new Storage Account with a new container.
-- Create a metasote for the region.
+- Create a metastore for the region.
 - Assign the Metasote to the workspace.

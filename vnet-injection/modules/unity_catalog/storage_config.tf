@@ -13,7 +13,7 @@ resource "azurerm_databricks_access_connector" "access_connector" {
   }
 }
 
-# Cereate Azure Storage Account
+# Create Azure Storage Account
 resource "azurerm_storage_account" "storage_accont" {
   name                     = var.metastore_storage_name
   location                 = var.location
