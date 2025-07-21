@@ -1,4 +1,7 @@
-# Azure Workspace with VNET Injection
+# Azure Workspace with VNET Injection - STS
+
+*last update: 07/21/2025* <br>
+*reviewed by: Thais Henrique*
 
 ## Prerequisite: 
 You need to have the Azure CLI Installed:
@@ -51,20 +54,43 @@ Navigate to Azure Portal and verify that all resources were deployed successfull
 
 ### Which resource this terraform creates?
 
-List of reources
+List of reources:
 
-Image of the components and its relationship
+* Resource Group
+* Databricks Managed Resource Group
+* VNET with 2 subnets (host and container)
+* Delegation for the Subnet to Databricks Workspace
+* Security Group with the rules already added
+* NAT Gateway and a Public IP for the NAT.
+* Storage Account and some containers
+* Access Connector for Azure Databricks
+* Managed Identity for the Access Connector
+* IAM Roles for the Access Connector on the Storage account
+
+All the Azure Resource that will be created:
+
+![Image of the components and its relationship](./Az_vnet_terraform_simple_diagram.png)
 
 
 ### Variables required
 
-variable.auto.tfvars 
-What should be filled
+You need to fill all the variable on the file: ***variable.auto.tfvars***.
 
+- prefix
+- location
+- adb_account_id
+- subscription_id
+- metastore_owner
+- tags
 
 ### Understanding the modules
 
-Workspace
+#### Workspace
 
-Unity Catalog
+This module creates all the resource related to Azure Portal, including the Azure Databricks Workspace
 
+#### Unity Catalog
+
+Create a new Storage Account with a new container.
+Create a metasote for the region.
+Assign the Metasote to the workspace.
