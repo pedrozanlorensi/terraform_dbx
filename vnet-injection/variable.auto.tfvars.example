@@ -11,3 +11,16 @@ tags = {
     keys   = "<value>"
     key = "<value>"
   }
+
+# New optional variables for handling existing Metastores
+# Use these if you already have a Metastore in your Databricks account
+
+# Set to true if you want to use an existing Metastore instead of creating a new one
+use_existing_metastore = true
+
+# Provide the ID of your existing Metastore (required when use_existing_metastore = true)
+# SELECT current_metastore();
+existing_metastore_id = "12345678-1234-1234-1234-123456789abc"
+
+# Set to true if your workspace already has a Metastore assigned
+skip_metastore_assignment = true

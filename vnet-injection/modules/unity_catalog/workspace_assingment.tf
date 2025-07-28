@@ -1,5 +1,8 @@
 # Assign Metastore (metastore.tf) to the Workspace (workspace_vnet/workspace.tf)
+# Only assign if not skipping assignment (useful if workspace already has a Metastore)
 resource "databricks_metastore_assignment" "default" {
-  workspace_id = var.workspace_id # or other id on the region
-  metastore_id = databricks_metastore.databricks-metastore.id
+  count        = var.skip_metastore_assignment ? 0 : 1
+  provider     = databricks.mws
+  workspace_id = var.workspace_id
+  metastore_id = local.metastore_id
 }

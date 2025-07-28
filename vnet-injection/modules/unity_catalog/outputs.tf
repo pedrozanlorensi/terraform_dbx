@@ -2,7 +2,7 @@
 #  Do not delete them
 
 output "metastore_id" {
-  value = databricks_metastore.databricks-metastore.id
+  value = local.metastore_id
 }
 
 output "access_connector_id" {

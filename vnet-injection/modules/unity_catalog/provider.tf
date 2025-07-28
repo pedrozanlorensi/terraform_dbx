@@ -6,6 +6,7 @@ terraform {
     }
     databricks = {
       source  = "databricks/databricks"  # Explicit source declaration # Recommended version constraint
+      configuration_aliases = [databricks.workspace, databricks.mws]
     }
     azuread = {
       source  = "hashicorp/azuread"
