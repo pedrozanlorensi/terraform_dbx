@@ -1,0 +1,5 @@
+# Fill these out with your secret values before running the Terraform script.
+# These values are sensitive and should not be shared publicly.
+databricks_account_id   = "" # FILL THESE OUT
+client_id               = "" # FILL THESE OUT
+client_secret           = "" # FILL THESE OUT
