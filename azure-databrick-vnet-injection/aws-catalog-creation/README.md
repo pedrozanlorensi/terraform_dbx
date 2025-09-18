@@ -38,7 +38,7 @@ terraform plan
 terraform apply
 ```
 
-2a) What these commands do (one-liners):
+2a) What these commands do:
 - `terraform init`: Downloads providers and initializes the working directory.
 - `terraform plan`: Shows the changes Terraform will make without applying them.
 - `terraform apply`: Applies the planned changes to create/update resources.

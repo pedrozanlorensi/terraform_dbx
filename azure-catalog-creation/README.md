@@ -12,7 +12,7 @@ This example provisions cloud storage, access connector, a Databricks storage cr
 ### Prerequisites
 - Existing Azure Databricks workspace already attached to a Unity Catalog metastore
 - Azure CLI logged in: `az login`
-- Databricks CLI auth via Azure (`auth_type = azure-cli`) or `DATABRICKS_TOKEN`
+- Databricks CLI auth via `databricks auth login`
 - The following information:
   - `azure_workspace_resource_id` of the workspace
   - `workspace_host` (e.g. `https://adb-123456789.12.azuredatabricks.net`)
@@ -42,7 +42,7 @@ terraform plan
 terraform apply
 ```
 
-2a) What these commands do (one-liners):
+2a) What these commands do:
 - `terraform init`: Downloads providers and initializes the working directory.
 - `terraform plan`: Shows the changes Terraform will make without applying them.
 - `terraform apply`: Applies the planned changes to create/update resources.
