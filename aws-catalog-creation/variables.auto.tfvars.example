@@ -1,0 +1,32 @@
+workspace_host = "https://dbc-xxxxxxxx-xxxx.cloud.databricks.com"
+client_id      = "oauth-client-id"
+client_secret  = "oauth-client-secret"
+region         = "us-east-1"
+
+resource_prefix        = "proj"
+databricks_account_id  = "123456789012345"
+external_bucket_name   = "" # optional, leave blank to auto-generate
+external_location_prefix = "catalogs/analytics"
+external_location_name = "extloc-analytics"
+storage_credential_name = "cred-analytics"
+
+external_location_grants = [
+  {
+    principal  = "data-engineers"
+    privileges = ["READ_FILES", "WRITE_FILES", "CREATE_EXTERNAL_TABLE"]
+  }
+]
+
+# Optional: also create a catalog backed by the external location
+create_catalog   = false
+catalog_name     = "analytics"
+catalog_comment  = "Analytics catalog"
+catalog_grants = [
+  {
+    principal  = "data-engineers"
+    privileges = ["USE_CATALOG", "CREATE_SCHEMA"]
+  }
+]
+set_default_catalog = false
+
+

@@ -1,0 +1,26 @@
+##Fill these out with your secret values before running the Terraform script.
+# These values are sensitive and should not be shared publicly.
+# Remove the ".example" from this file name. It should be "variable.auto.tfvars"
+
+prefix             = "<prefix>"
+location           = "<azure_region>"
+adb_account_id     = "<databricks_account_id>"
+subscription_id    = "<azure_subscription_id>"
+metastore_owner    = "<user_or_group_or_sp>" # You can change later on the metastore
+tags = {
+    keys   = "<value>"
+    key = "<value>"
+  }
+
+# New optional variables for handling existing Metastores
+# Use these if you already have a Metastore in your Databricks account
+
+# Set to true if you want to use an existing Metastore instead of creating a new one
+use_existing_metastore = true
+
+# Provide the ID of your existing Metastore (required when use_existing_metastore = true)
+# SELECT current_metastore();
+existing_metastore_id = "12345678-1234-1234-1234-123456789abc"
+
+# Set to true if your workspace already has a Metastore assigned
+skip_metastore_assignment = true

@@ -1,0 +1,33 @@
+workspace_host = "https://adb-xxxxxxxxxx.xx.azuredatabricks.net"
+azure_workspace_resource_id = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rg-name/providers/Microsoft.Databricks/workspaces/ws-name"
+subscription_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+resource_group_name     = "rg-data"
+location                = "eastus2"
+access_connector_name   = "dbr-access-connector"
+storage_account_name    = "stgucxxxxxxxx"
+container_name          = "uc"
+external_location_path  = "catalogs/analytics"
+external_location_name  = "extloc-analytics"
+storage_credential_name = "cred-analytics"
+
+external_location_grants = [
+  {
+    principal  = "data-engineers"
+    privileges = ["READ_FILES", "WRITE_FILES", "CREATE_EXTERNAL_TABLE"]
+  }
+]
+
+# Optional: also create a catalog backed by the external location
+create_catalog   = false
+catalog_name     = "analytics"
+catalog_comment  = "Analytics catalog"
+catalog_grants = [
+  {
+    principal  = "data-engineers"
+    privileges = ["USE_CATALOG", "CREATE_SCHEMA"]
+  }
+]
+set_default_catalog = false
+
+
